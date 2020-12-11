@@ -1,7 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'fontsource-roboto';
-import App from './app';
-//import * as serviceWorker from './serviceWorker';
+import app from './app';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const startApp = async () => {
+  const header = document.querySelector('[data-app-name]');
+  if (!header) return;
+
+  const programName = await app();
+  header.textContent = programName;
+};
+
+document.addEventListener('DOMContentLoaded', startApp);
