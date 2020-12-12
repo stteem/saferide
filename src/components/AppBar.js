@@ -29,7 +29,7 @@ export default function MenuAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-
+  console.log('app bar auth ',props.auth)
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

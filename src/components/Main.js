@@ -42,6 +42,7 @@ class Main extends Component {
       )} />
     );
 
+    console.log('auth ',this.props.auth)
 
 		return(
 			<div>
