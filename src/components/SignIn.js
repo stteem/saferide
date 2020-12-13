@@ -65,7 +65,7 @@ export default function SignIn(props) {
 
     if (response.tokenId) {
         await props.loginUser({
-          token: response.accessToken, 
+          token: response.tokenId, 
           email: response.profileObj.email,
           name: response.profileObj.name,
           imageUrl: response.profileObj.imageUrl

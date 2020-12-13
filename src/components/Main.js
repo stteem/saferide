@@ -47,7 +47,9 @@ class Main extends Component {
 
 		return(
 			<div>
-        <MenuAppBar auth={this.props.auth.isAuthenticated} logoutUser={this.props.logoutUser} />
+        <MenuAppBar auth={this.props.auth.isAuthenticated} logoutUser={this.props.logoutUser}
+                    user={this.props.auth.user} imageUrl={this.props.auth.imageUrl}
+        />
 				<Switch>
 				    <PrivateRoute path="/home" component={() =>  <Home /> } />
             <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} /> } />

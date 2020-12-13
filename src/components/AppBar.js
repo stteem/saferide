@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Avatar from '@material-ui/core/Avatar';
 import Switch from '@material-ui/core/Switch';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import FormGroup from '@material-ui/core/FormGroup';
+
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  avatar: {
+    display: 'flex',
+    '& > *': {
+      marginRight: theme.spacing(0.5),
+    },
   },
 }));
 
@@ -60,7 +66,16 @@ export default function MenuAppBar(props) {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+              <div className={classes.avatar}>
+                {
+                  props.imageUrl ? 
+                  <Avatar alt={props.user} src={props.imageUrl} /> :
+                  <AccountCircle />
+                }
+              </div>
+                <Typography variant="body2">
+                  {props.user}
+                </Typography>
               </IconButton>
               <Menu
                 id="menu-appbar"
