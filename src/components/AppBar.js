@@ -38,6 +38,11 @@ export default function MenuAppBar(props) {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    setAnchorEl(null);
+    props.logoutUser();
+  }
+
   return (
     <div className={classes.root}>
       
@@ -72,7 +77,7 @@ export default function MenuAppBar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Sign out</MenuItem>
+                <MenuItem onClick={handleLogout}>Log out</MenuItem>
               </Menu>
             </div>
           )}

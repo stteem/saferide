@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import GoogleLogin from 'react-google-login';
+import { useHistory, useLocation } from 'react-router-dom';
+
+
 
 function Copyright() {
   return (
@@ -25,6 +29,7 @@ function Copyright() {
     </Typography>
   );
 }
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,8 +51,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
+
+  let history = useHistory();
+  let location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  const responseGoogle = async (response) => {
+
+    console.log(response);
+
+    if (response.tokenId) {
+        await props.loginUser({
+          token: response.accessToken, 
+          email: response.profileObj.email,
+          name: response.profileObj.name,
+          imageUrl: response.profileObj.imageUrl
+        });
+
+        // return user to previous path if google account has been verified in the
+        //server and a token returned and stored in localStorage
+        return localStorage.getItem('token') ? history.replace(from) : null;
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -108,6 +136,24 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </form>
+      </div>
+      <div className="or">
+        <Typography component="h1" variant="body2">
+            Or sign in with Google
+        </Typography>
+      </div>
+      <div style={{marginTop: '10px'}}>
+        <GoogleLogin
+          className="loginbtn"
+          clientId="388094655941-pdi64b6g9p04o38v87dg05k440l8sv3h.apps.googleusercontent.com"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          theme="dark"
+          responseType="code,token"
+        >
+        <div className="loginspan"><span>Sign in with Google</span></div>
+        </GoogleLogin>
       </div>
       <Box mt={8}>
         <Copyright />

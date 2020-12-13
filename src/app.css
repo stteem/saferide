@@ -1,0 +1,18 @@
+.loginbtn {
+	width: 100%;
+	text-align: center;
+}
+
+.loginspan {
+	margin-left: 45%;
+	width: 100%;
+}
+@media(min-width: 750px){
+	.loginspan {
+		margin-left: 80%;
+	}
+}
+
+.or {
+	margin-top: 30px;
+}

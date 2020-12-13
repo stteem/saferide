@@ -5,32 +5,28 @@ import * as ActionTypes from './ActionTypes';
 // we would also want a util to check if the token is expired.
 export const Auth = (state = {
         isLoading: false,
-        isAuthenticated: localStorage.getItem('token') ? true : false,
+        isAuthenticated: localStorage.getItem('token') != undefined ? true : false,
         token: localStorage.getItem('token'),
         user: localStorage.getItem('user'),
-        userid: localStorage.getItem('userid'),
+        imageUrl: localStorage.getItem('imageUrl'),
         errMess: null
     }, action) => {
     switch (action.type) {
         case ActionTypes.LOGIN_REQUEST:
             return {...state,
-                isLoading: true,
-                isAuthenticated: false,
-                user: action.creds
+                isLoading: true
             };
         case ActionTypes.LOGIN_SUCCESS:
             return {...state,
                 isLoading: false,
-                isAuthenticated: true,
+                isAuthenticated: localStorage.getItem('token') != undefined ? true : false,
                 errMess: '',
                 token: action.token,
                 user: action.user,
-                userid: action.userid
             };
         case ActionTypes.LOGIN_FAILURE:
             return {...state,
                 isLoading: false,
-                isAuthenticated: false,
                 errMess: action.message
             };
         case ActionTypes.LOGOUT_REQUEST:
@@ -43,7 +39,8 @@ export const Auth = (state = {
                 isLoading: false,
                 isAuthenticated: false,
                 token: '',
-                user: null
+                user: '',
+                imageUrl: ''
             };
         default:
             return state
