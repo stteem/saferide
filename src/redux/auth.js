@@ -6,7 +6,6 @@ import * as ActionTypes from './ActionTypes';
 export const Auth = (state = {
         isLoading: false,
         isAuthenticated: localStorage.getItem('token') != undefined ? true : false,
-        token: localStorage.getItem('token'),
         user: localStorage.getItem('user'),
         imageUrl: localStorage.getItem('imageUrl'),
         errMess: null
@@ -21,8 +20,8 @@ export const Auth = (state = {
                 isLoading: false,
                 isAuthenticated: localStorage.getItem('token') != undefined ? true : false,
                 errMess: '',
-                token: action.token,
-                user: action.user,
+                user: action.payload.user,
+                imageUrl: action.payload.imageUrl
             };
         case ActionTypes.LOGIN_FAILURE:
             return {...state,
@@ -38,7 +37,6 @@ export const Auth = (state = {
             return {...state,
                 isLoading: false,
                 isAuthenticated: false,
-                token: '',
                 user: '',
                 imageUrl: ''
             };

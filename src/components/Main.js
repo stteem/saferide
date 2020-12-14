@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Home from './Home';
 import MenuAppBar from './AppBar';
 import SignIn from './SignIn';
-import { loginUser, logoutUser } from '../redux/ActionCreators';
+import { loginGoogleUser, logoutUser } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    loginUser: (creds) => dispatch(loginUser(creds)),
+    loginGoogleUser: (creds) => dispatch(loginGoogleUser(creds)),
     logoutUser: () => dispatch(logoutUser())
 });
 
@@ -47,12 +47,12 @@ class Main extends Component {
 
 		return(
 			<div>
-        <MenuAppBar auth={this.props.auth.isAuthenticated} logoutUser={this.props.logoutUser}
+        <MenuAppBar isAuthenticated={this.props.auth.isAuthenticated} logoutUser={this.props.logoutUser}
                     user={this.props.auth.user} imageUrl={this.props.auth.imageUrl}
         />
 				<Switch>
 				    <PrivateRoute path="/home" component={() =>  <Home /> } />
-            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} /> } />
+            <Route path="/login" component={() =>  <SignIn loginGoogleUser={this.props.loginGoogleUser} /> } />
             <Redirect to="/home" />
 				</Switch>
 			</div>

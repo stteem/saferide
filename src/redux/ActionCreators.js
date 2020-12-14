@@ -12,8 +12,7 @@ export const requestLogin = () => {
 export const receiveLogin = (response) => {
     return {
         type: ActionTypes.LOGIN_SUCCESS,
-        token: response.token,
-        user: response.user
+        payload: response
     }
 }
   
@@ -27,7 +26,7 @@ export const loginError = (message) => {
 
 
 
-export const loginUser = (creds) => (dispatch) => {
+export const loginGoogleUser = (creds) => (dispatch) => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin());
 
@@ -44,8 +43,6 @@ export const loginUser = (creds) => (dispatch) => {
     .then(response => response.json())
     .then(response => {
         console.log('response.json', response)
-        const headerToken = response.headers; //get('Authorization');
-        console.log('headerToken ',headerToken)
         if (response) {
             // If login was successful, set the token in local storage
             const storage = localStorage.setItem('token', response.token);

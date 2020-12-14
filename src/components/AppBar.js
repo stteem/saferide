@@ -35,7 +35,7 @@ export default function MenuAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  console.log('app bar auth ',props.auth)
+  console.log('app bar auth ',props.isAuthenticated)
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -57,7 +57,7 @@ export default function MenuAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             Reptila
           </Typography>
-          {props.auth && (
+          {props.isAuthenticated && (
             <div>
               <IconButton
                 aria-label="account of current user"

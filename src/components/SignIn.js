@@ -64,10 +64,11 @@ export default function SignIn(props) {
     console.log(response);
 
     if (response.tokenId) {
-        await props.loginUser({
+        await props.loginGoogleUser({
           token: response.tokenId, 
           email: response.profileObj.email,
           name: response.profileObj.name,
+          firstName: response.profileObj.givenName,
           imageUrl: response.profileObj.imageUrl
         });
 
@@ -152,7 +153,7 @@ export default function SignIn(props) {
           theme="dark"
           responseType="code,token"
         >
-        <div className="loginspan"><span>Sign in with Google</span></div>
+        <div className="loginspan"><span>Log in with Google</span></div>
         </GoogleLogin>
       </div>
       <Box mt={8}>
