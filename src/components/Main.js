@@ -52,7 +52,7 @@ class Main extends Component {
         />
 				<Switch>
 				    <PrivateRoute path="/home" component={() =>  <Home /> } />
-            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} /> } />
+            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} isLoading={this.props.auth.isLoading} /> } />
             <Redirect to="/home" />
 				</Switch>
 			</div>

@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import reptile from '../assets/contemplative-reptile.jpg';
 import Container from '@material-ui/core/Container';
 
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 545,
@@ -18,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
 
   return (

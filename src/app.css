@@ -23,3 +23,10 @@
 .user {
 	font-size: 12px;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 250px;
+}
