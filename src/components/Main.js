@@ -51,8 +51,8 @@ class Main extends Component {
                     user={this.props.auth.user} imageUrl={this.props.auth.imageUrl}
         />
 				<Switch>
-				    <PrivateRoute path="/home" component={() =>  <Home /> } />
-            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} /> } />
+				    <PrivateRoute path="/home" component={() =>  <Home isLoading={this.props.auth.isLoading} /> } />
+            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser}  /> } />
             <Redirect to="/home" />
 				</Switch>
 			</div>

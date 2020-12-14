@@ -16,7 +16,6 @@ import GoogleLogin from 'react-google-login';
 import { useHistory, useLocation } from 'react-router-dom';
 
 
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -64,7 +63,7 @@ export default function SignIn(props) {
     console.log(response);
 
     if (response.tokenId) {
-        await props.loginUser({
+        return props.loginUser({
           token: response.tokenId, 
           email: response.profileObj.email,
           name: response.profileObj.name,
@@ -74,7 +73,7 @@ export default function SignIn(props) {
 
         // return user to previous path if google account has been verified in the
         //server and a token returned and stored in localStorage
-        return localStorage.getItem('token') ? history.replace(from) : null;
+        //return localStorage.getItem('token') ? history.replace(from) : null;
     }
   }
 
