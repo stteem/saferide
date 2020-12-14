@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Home from './Home';
 import MenuAppBar from './AppBar';
 import SignIn from './SignIn';
-import { loginGoogleUser, logoutUser } from '../redux/ActionCreators';
+import { loginUser, logoutUser } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    loginGoogleUser: (creds) => dispatch(loginGoogleUser(creds)),
+    loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser())
 });
 
@@ -52,7 +52,7 @@ class Main extends Component {
         />
 				<Switch>
 				    <PrivateRoute path="/home" component={() =>  <Home /> } />
-            <Route path="/login" component={() =>  <SignIn loginGoogleUser={this.props.loginGoogleUser} /> } />
+            <Route path="/login" component={() =>  <SignIn loginUser={this.props.loginUser} /> } />
             <Redirect to="/home" />
 				</Switch>
 			</div>

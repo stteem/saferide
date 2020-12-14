@@ -26,7 +26,7 @@ export const loginError = (message) => {
 
 
 
-export const loginGoogleUser = (creds) => (dispatch) => {
+export const loginUser = (creds) => (dispatch) => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin());
 
@@ -44,7 +44,8 @@ export const loginGoogleUser = (creds) => (dispatch) => {
     .then(response => {
         console.log('response.json', response)
         if (response) {
-            // If login was successful, set the token in local storage
+            // If login was successful, set the token and user detail in local storage
+            // for persistence across reloads
             const storage = localStorage.setItem('token', response.token);
             localStorage.setItem('user', response.user);
             localStorage.setItem('email', response.email);

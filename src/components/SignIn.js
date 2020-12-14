@@ -64,7 +64,7 @@ export default function SignIn(props) {
     console.log(response);
 
     if (response.tokenId) {
-        await props.loginGoogleUser({
+        await props.loginUser({
           token: response.tokenId, 
           email: response.profileObj.email,
           name: response.profileObj.name,
@@ -140,7 +140,7 @@ export default function SignIn(props) {
       </div>
       <div className="or">
         <Typography component="h1" variant="body2">
-            Or sign in with Google
+            Or
         </Typography>
       </div>
       <div style={{marginTop: '10px'}}>
@@ -153,7 +153,13 @@ export default function SignIn(props) {
           theme="dark"
           responseType="code,token"
         >
-        <div className="loginspan"><span>Log in with Google</span></div>
+        <div className="loginspan">
+          <span>
+            <Typography component="h1" variant="body2">
+              Log in with Google
+            </Typography>
+          </span>
+        </div>
         </GoogleLogin>
       </div>
       <Box mt={8}>
