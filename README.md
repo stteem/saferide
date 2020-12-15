@@ -1,67 +1,43 @@
-barebones setup for JavaScript / Node projects replace this with a one-liner phrase describing this project or app
-
 [![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
 
 
-## About
+## Description
 
-What is this project about. Ok to enrich here or the section above it with an image. 
-
-Once this repo has been setup on Codacy by the TTL, replace the above badge with the actual one from the Codacy dashboard, and add the code coverage badge as well. This is mandatory
-
-This is a simple JavaScript starter repo template for setting up your project. The setup contains
-
-- Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest
-
-- Eslint & Prettier: For formatting code to match ESlint AirBnB coding standard. You might need to install the ESlint and Prettier plugins for your code editor to make the most of these utilities
-
-## Why
-
-Talk about what problem this solves, what SDG(s) and SGD targets it addresses and why these are imoirtant
-
-## Usage
- How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup
+The problem / challenge / goal was to implement authentication or sign-up with an identity provider of choice. I chose Google because i believe they are more ubiquitous than the others. Also, i chose this challenge because i have always wanted to implement authentication with identity providers, but to no avail due to lack of time, so i thought i might as well kill two birds with one stone. I am glad i did.
 
 
-## Setup
+## Solution
 
-Install `npm` or `yarn` if you dont have any of them already installed. We recommend Yarn though.
+My solution focuses on the full stack of web development, using React.js and Redux for the front-end, Node.js / express.js for the back-end, and MongoDB for the database. The front-end is deployed with Github Pages(An alternative would be Netlify, but i chose github pages for its simplicity with configurations), and the back-end is staged on a heroku pipeline connected to github for automatic or manual deployment.
 
-After clonning the repo to your local machine and moving into the cloned folder, Run `yarn install` to get started by installing dependencies. 
 
-`src/index.js` is the entry to the project and source code should go into the `src` folder.
+## Technical and Architectural choices
 
-All tests should be written in the `__tests__' folder. There's a sample in there.
+Against create-react-app, i started this project with the barebones setup/template for JavaScript / Node projects by buildforsdg@andela.com which uses parcel bundler, a minimalist bundler compared to webpack. This template gives me the freedom to implement PWA features(like offline post, etc) that create-react-app doesn't allow. Last i checked, i could only implement cache strategies.
 
-This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler that WebPack and the others
+As a rule of thumb, i choose a multi repo over a mono repo architecture every other time. It allows for clear separation of the backend from the frontend, and also allows different backend teams to have clear ownership, as in the case of micro services.
 
-#### Hints
 
-- Run `npm install` or `yarn install` to get started. We'll assume you are using Yarn.
-- Install additional dependencies: `yarn add <dependency-name> [-D]`
-- Run tests: `yarn test`
-- Run tests with test coverage info: `yarn test:cover`
-- Check the codebase for proper syntax and formatting compliance: `yarn lint`
-- Run your app in local dev mode: `yarn start`. This puts the bundled app in a `dist` folder, set up a local web server at localhost:1234, and continues to watch for your code changes which it syncs with the local server. This means if you loaded the app in a browser, it will auto-refresh as you code along. Feel free to use whatever bundler best meets your needs. Parcel was only added as a sample and for those looking for a simple but effective solution to the hassle of bundlers. 
+## Design
 
-## Authors
+To get a sleek and consistent UI, a design system is needed. I used the Material Design system by Material UI to achieve a beautiful, snappy, and fun-to-use UI across the frontend. That means tweaking Material UI components to achieve set goal. 
 
-List the team behind this project. Their names linked to their Github, LinkedIn, or Twitter accounts should siffice. Ok to signify the role they play in the project, including the TTL and mentor
+## Trade-offs
 
-## Contributing
-If this project sounds interesting to you and you'd like to contribute, thank you!
-First, you can send a mail to buildforsdg@andela.com to indicate your interest, why you'd like to support and what forms of support you can bring to the table, but here are areas we think we'd need the most help in this project :
-1.  area one (e.g this app is about human trafficking and you need feedback on your roadmap and feature list from the private sector / NGOs)
-2.  area two (e.g you want people to opt-in and try using your staging app at staging.project-name.com and report any bugs via a form)
-3.  area three (e.g here is the zoom link to our end-of sprint webinar, join and provide feedback as a stakeholder if you can)
+CORS: In the server, i coded setHeaders to allow all origins to access the api. For a real app in production, implementing CORS and defining authorized origins would be the way to go.
 
-## Acknowledgements
+Google Login Token Id Verification: For this i used the decode method of jwt(i.e jwt.decode) to verify ID tokens. Upon researching the jwt npm page i found a warning about using jwt.decode: "Warning: This will not verify whether the signature is valid. You should not use this for untrusted messages. You most likely want to use jwt.verify instead." jwt.verify requires a minimum of token and public key(public.pem). I am yet to understand the public key param, but i guess i found a solution alas; apparently there is the "google-auth-library" npm package by Google that does the job.
 
-Did you use someone else’s code?
-Do you want to thank someone explicitly?
-Did someone’s blog post spark off a wonderful idea or give you a solution to nagging problem?
+Error Handling and Friendly Error Messages: Given more time i would return appropiate error messages that are user friendly.
 
-It's powerful to always give credit.
+Unit and Integration tests: I mostly test manually, i am working on covering major unit test cases, and will like to write integration tests for CI/CD if time permits.
+
+Linting: As easy as linting may be, i thought i'd lint when all the requirements are in.
+
+Monitoring and Logging: This took the back burner amongst all the requirements for this challenge, so i traded viewing logs on heroku over setting up a more robust one. 
+
+This app is hosted at https://stteem.github.io/signinwith
+
 
 ## LICENSE
 MIT
