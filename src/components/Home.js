@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import reptile from '../assets/contemplative-reptile.jpg';
 import Container from '@material-ui/core/Container';
+import MenuAppBar from './AppBar';
+
 
 const useStyles = makeStyles({
   root: {
@@ -21,6 +23,10 @@ export default function Home(props) {
   const classes = useStyles();
 
   return (
+    <div>
+    <MenuAppBar isAuthenticated={this.props.auth.isAuthenticated} logoutUser={this.props.logoutUser}
+                user={this.props.auth.user} imageUrl={this.props.auth.imageUrl}
+    />
   	<Container component="main" maxWidth="sm">
     <Card className={classes.root}>
       <CardActionArea>
@@ -51,5 +57,6 @@ export default function Home(props) {
       </CardActions>
     </Card>
     </Container>
+    </div>
   );
 }

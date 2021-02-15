@@ -1,4 +1,28 @@
+.signin-background {
+	height: 650px;
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+#butn-div {
+	display: flex;
+	flex-flow: row;
+	padding: 20px;
+}
+
+#logo-div {
+	color: white;
+}
+
+.butn {
+	border-radius:20px;
+	background: transparent;
+	opacity: 0.8;
+	border-color: white;
+	color: white;
+}
+
 .loginbtn {
+	margin-top: 100px;
 	width: 100%;
 	text-align: center;
 }
@@ -13,13 +37,6 @@
 	}
 }
 
-.or {
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
-	margin-top: 30px;
-}
-
 .user {
 	font-size: 12px;
 }
@@ -30,3 +47,12 @@
   width: 100%;
   margin-top: 250px;
 }
+
+/*
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+
+background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+*/

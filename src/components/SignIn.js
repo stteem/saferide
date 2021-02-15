@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -15,14 +15,16 @@ import Container from '@material-ui/core/Container';
 import GoogleLogin from 'react-google-login';
 import { useHistory, useLocation } from 'react-router-dom';
 import CircularIndeterminate from './Loading';
+import { Button } from 'reactstrap';
+
 
 
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center" style={{color:'white'}}>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://twitter.com/uwemuke">
         Uwem Uke
       </Link>{' '}
       {new Date().getFullYear()}
@@ -33,22 +35,17 @@ function Copyright() {
 
 
 const useStyles = makeStyles((theme) => ({
+
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
+    marginTop: theme.spacing(15),
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
   },
 }));
 
@@ -92,70 +89,24 @@ export default function SignIn(props) {
   else{
 
     return (
+      <div className='signin-background'>
+      <div id='butn-div'>
+        <h5 id='logo-div'>Safe Ride</h5>
+        <Button className="butn ml-auto"> 
+            For Drivers
+        </Button>
+      </div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" style={{color:'white'}}>
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
         </div>
-        <div className="or">
-          <Typography component="h1" variant="body2">
-              Or
-          </Typography>
-        </div>
+        
         <div style={{marginTop: '10px'}}>
           <GoogleLogin
             className="loginbtn"
@@ -169,7 +120,7 @@ export default function SignIn(props) {
           <div className="loginspan">
             <span>
               <Typography component="h1" variant="body2">
-                Log in with Google
+                Sign in with Google
               </Typography>
             </span>
           </div>
@@ -179,6 +130,7 @@ export default function SignIn(props) {
           <Copyright />
         </Box>
       </Container>
+      </div>
     );
   }
 }
